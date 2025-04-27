@@ -32,6 +32,9 @@ jobs:
         key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
 
     - name: Build with Gradle
+      run: ./gradlew build 
+
+    - name: Run
       run: ./gradlew assemble
 
     - name: Upload APK artifact
