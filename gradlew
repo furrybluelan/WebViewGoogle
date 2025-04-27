@@ -15,11 +15,11 @@ APP_BASE_NAME=`basename "$0"`
 # Use the maximum available, or set MAX_FD != -1 to use that value.
 MAX_FD="maximum"
 
-warn ( ) {
+warn () {
     echo "$*"
 }
 
-die ( ) {
+die () {
     echo
     echo "$*"
     echo
@@ -61,7 +61,7 @@ while [ -h "$PRG" ] ; do
     fi
 done
 SAVED="`pwd`"
-cd "`dirname \"$PRG\"`/" >&-
+cd "`dirname "$PRG"`/" >&-
 APP_HOME="`pwd -P`"
 cd "$SAVED" >&-
 
@@ -107,7 +107,7 @@ fi
 
 # For Darwin, add options to specify how the application appears in the dock
 if $darwin; then
-    GRADLE_OPTS="$GRADLE_OPTS \"-Xdock:name=$APP_NAME\" \"-Xdock:icon=$APP_HOME/media/gradle.icns\""
+    GRADLE_OPTS="$GRADLE_OPTS "-Xdock:name=$APP_NAME" "-Xdock:icon=$APP_HOME/media/gradle.icns""
 fi
 
 # For Cygwin, switch paths to Windows format before running java
@@ -136,7 +136,7 @@ if $cygwin ; then
         if [ $CHECK -ne 0 ] && [ $CHECK2 -eq 0 ] ; then                    ### Added a condition
             eval `echo args$i`=`cygpath --path --ignore --mixed "$arg"`
         else
-            eval `echo args$i`="\"$arg\""
+            eval `echo args$i`=""$arg""
         fi
         i=$((i+1))
     done
@@ -162,3 +162,6 @@ eval splitJvmOpts $DEFAULT_JVM_OPTS $JAVA_OPTS $GRADLE_OPTS
 JVM_OPTS[${#JVM_OPTS[*]}]="-Dorg.gradle.appname=$APP_BASE_NAME"
 
 exec "$JAVACMD" "${JVM_OPTS[@]}" -classpath "$CLASSPATH" org.gradle.wrapper.GradleWrapperMain "$@"
+
+
+
